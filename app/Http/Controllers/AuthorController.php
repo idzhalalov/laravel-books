@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Author;
+use Illuminate\Support\Facades\Auth;
 
 class AuthorController extends Controller
 {
@@ -53,9 +54,9 @@ class AuthorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Author $author)
     {
-        //
+        return $author;
     }
 
     /**
@@ -66,7 +67,14 @@ class AuthorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $author = Author::find($id);
+
+        return view(
+            'authors.form_edit',
+            [
+                'author' => $author,
+            ]
+        );
     }
 
     /**
@@ -78,7 +86,15 @@ class AuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'       => 'required',
+        ]);
+
+        $author = Author::find($id);
+        $author->full_name = $request->get('name');
+        $author->save();
+
+        return redirect('/authors')->with('success', 'Author has been updated');
     }
 
     /**
