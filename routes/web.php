@@ -13,3 +13,4 @@
 
 Route::get('/', 'BookController@home');
 Route::resource('books', 'BookController');
+Route::resource('authors', 'AuthorController');
