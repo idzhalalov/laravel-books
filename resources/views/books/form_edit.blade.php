@@ -30,7 +30,7 @@
             <div class="form-group">
                 @csrf
                 <label for="title">Book Title:</label>
-                <input type="text" class="form-control" name="title" id="title" value="{{ $title }}" />
+                <input type="text" class="form-control" name="title" id="title" value="{{ $book->title }}" />
             </div>
             <div class="form-group">
                 <label for="authors">Authors:</label>
@@ -38,7 +38,11 @@
                     <option></option>
 
                     @foreach ($authors as $author)
-                        <option value="{{ $author->id }}">{{ $author->full_name }}</option>
+                        @if ($book->author_id == $author->id)
+                            <option selected value="{{ $author->id }}">{{ $author->full_name }}</option>
+                        @else
+                            <option value="{{ $author->id }}">{{ $author->full_name }}</option>
+                        @endif
                     @endforeach
                 </select>
             </div>

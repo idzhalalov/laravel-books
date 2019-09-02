@@ -89,7 +89,16 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = Book::find($id);
+        $authors = Author::orderBy('id', 'desc')->get();
+
+        return view(
+            'books.form_edit',
+            [
+                'book' => $book,
+                'authors' => $authors
+            ]
+        );
     }
 
     /**
