@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-8"><h2>Books</h2></div>
-    <div class="col-4 text-right"><a href="/books" class="btn btn-success">+ Add</a></div>
+    <div class="col-4 text-right"><a href="/books/create" class="btn btn-success">+ Add</a></div>
 </div>
 
 

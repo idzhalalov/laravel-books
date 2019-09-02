@@ -45,7 +45,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $authors = Author::orderBy('id', 'desc')->get();
+
+        return view('books.form', ['authors' => $authors]);
     }
 
     /**
@@ -56,7 +58,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'author'=> 'required|integer',
+        ]);
+        $book = new Book([
+            'title' => $request->get('title'),
+            'author_id'=> $request->get('author'),
+        ]);
+        $book->save();
+        return redirect('/books')->with('success', 'Book has been added');
     }
 
     /**

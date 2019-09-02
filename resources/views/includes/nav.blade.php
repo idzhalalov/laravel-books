@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="books">Books</a>
+                    <a class="nav-link" href="/books">Books</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="authors">Authors</a>
+                    <a class="nav-link" href="/authors">Authors</a>
                 </li>
             </ul>
         </div>
