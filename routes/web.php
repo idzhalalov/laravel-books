@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/', 'BookController@index');
-Route::resource('books', 'BookController')->except(['index']);
+Route::get('/', 'BookController@home');
+Route::resource('books', 'BookController');

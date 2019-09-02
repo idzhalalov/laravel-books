@@ -15,11 +15,21 @@ class BookController extends Controller
      */
     public function index()
     {
+        return 'All of the books';
+    }
+
+    /**
+     * Display the home page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function home()
+    {
         $books = Book::leftJoin(
-                'authors',
-                'authors.id',
-                '=',
-                'books.author_id')
+            'authors',
+            'authors.id',
+            '=',
+            'books.author_id')
             ->orderBy('id', 'desc')
             ->limit(6)
             ->get([
@@ -36,6 +46,7 @@ class BookController extends Controller
             'authors' => $authors
         ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -84,7 +95,7 @@ class BookController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $idr
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
