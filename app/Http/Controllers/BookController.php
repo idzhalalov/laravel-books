@@ -15,7 +15,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        return 'All of the books';
+        $books = Book::detailedList();
+
+        return view('books.index', ['books' => $books]);
     }
 
     /**
@@ -25,19 +27,7 @@ class BookController extends Controller
      */
     public function home()
     {
-        $books = Book::leftJoin(
-            'authors',
-            'authors.id',
-            '=',
-            'books.author_id')
-            ->orderBy('id', 'desc')
-            ->limit(6)
-            ->get([
-                'books.id',
-                'books.title',
-                'books.author_id',
-                'authors.full_name'
-            ]);
+        $books = $books = Book::detailedList(6);
 
         $authors = Author::orderBy('id', 'desc')->limit(3)->get();
 
