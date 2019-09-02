@@ -22,8 +22,14 @@
                 <p class="card-text">By {{ $book->full_name }}</p>
             </div>
             <div class="card-footer">
-                <a href="/books/{{ $book->id }}" class="btn btn-success">Edit</a>
-                <a href="/books/{{ $book->id }}" class="btn btn-danger">Delete</a>
+                <a href="/books/{{ $book->id }}/edit" class="btn btn-success">Edit</a>
+
+                <form action="{{ route('books.destroy', $book->id)}}"
+                      method="post" class="d-inline-block">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
             </div>
         </div>
     </div>
