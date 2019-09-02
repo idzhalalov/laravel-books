@@ -12,5 +12,6 @@
 */
 
 Route::get('/', 'BookController@home');
+Route::post('search', 'SearchController@search');
 Route::resource('books', 'BookController');
 Route::resource('authors', 'AuthorController');
