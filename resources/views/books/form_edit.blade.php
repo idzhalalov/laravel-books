@@ -26,8 +26,9 @@
         </div>
         @endif
 
-        <form method="post" action="{{ route('books.store') }}">
+        <form method="post" action="{{ route('books.update', $book->id) }}">
             <div class="form-group">
+                @method('PATCH')
                 @csrf
                 <label for="title">Book Title:</label>
                 <input type="text" class="form-control" name="title" id="title" value="{{ $book->title }}" />
@@ -47,7 +48,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 </div>

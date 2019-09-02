@@ -110,7 +110,17 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'       => 'required',
+            'author' => 'required|integer',
+        ]);
+
+        $book = Book::find($id);
+        $book->title = $request->get('title');
+        $book->author_id = $request->get('author');
+        $book->save();
+
+        return redirect('/books')->with('success', 'Book has been updated');
     }
 
     /**
